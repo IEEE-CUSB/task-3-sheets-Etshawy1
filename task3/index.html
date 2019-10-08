@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IEEE Workshops</title>
+    <link rel="icon" href="https://ieeecusb.org/wp-content/uploads/2018/01/cropped-imageedit_1_8104413300-192x192.png">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" type="text/css"   href="/css/style.css">
+</head>
+<body>
+    <nav>
+        <img id="logo" src="https://ieeecusb.org/wp-content/uploads/2018/01/IEEE_White_Logo.png" alt="IEEE Logo">
+        <h1>Workshops Application form</h1>
+    </nav>
+
+    <form method="POST" id="form" onSubmit="return checkform()">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="Number">Phone number</label>
+            <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">+20</div>
+                </div>
+                <input type="number" class="form-control" id="Number" pattern="[0-9] {10}" name="phone" placeholder="1x xxxx xxxx" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="Uni">University</label><pre> (optional)</pre>
+            <input type="text" class="form-control" id="Uni" name="university" placeholder="University">
+        </div>
+        <div class="form-group">
+            <label for="Faculty">Faculty</label><pre> (optional)</pre>
+            <input type="text" class="form-control" id="Faculty" name="faculty" placeholder="Faculty">
+        </div>
+        <label>Academic year</label>
+        <div id="chooseYear">
+            <div class="custom-control custom-radio">
+                <input type="radio" id="PreparatoryYear" name="Year" onclick="changeYear('PreparatoryYear')" class="custom-control-input">
+                <label class="custom-control-label year-choose" for="PreparatoryYear">Preparatory Year</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="FirstYear" name="Year" onclick="changeYear('FirstYear')" class="custom-control-input">
+                <label class="custom-control-label year-choose" for="FirstYear">First Year</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="SecondYear" name="Year" onclick="changeYear('SecondYear')" class="custom-control-input">
+                <label class="custom-control-label year-choose" for="SecondYear">Second Year</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="ThirdYear" name="Year" onclick="changeYear('ThirdYear')" class="custom-control-input">
+                <label class="custom-control-label year-choose" for="ThirdYear">Third Year</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="FourthYear" name="Year" onclick="changeYear('FourthYear')" class="custom-control-input">
+                <label class="custom-control-label year-choose" for="FourthYear">Fourth Year</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="Other" name="Year" class="custom-control-input" onclick="changeYear('Other')" checked>
+                <label class="custom-control-label" for="Other">
+                    <div class="input-group mb-2 mr-sm-2">
+                        <input type="text" id = "other" placeholder="other" class="form-control">
+                    </div>
+                </label>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label for="choosePre1">First Preference</label>
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="choosePre1">Choose a workshop</button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <button class="dropdown-item" type="button" id="arduino1" onclick="arduino()">Arduino</button>
+                    <button class="dropdown-item" type="button" id="web1">Web</button>
+                    <button class="dropdown-item" type="button" id="android1">Android</button>
+                    <button class="dropdown-item" type="button" id="rasberry1">Rasberry Pi</button>
+                    <button class="dropdown-item" type="button" id="embedded1">Embedded</button>
+                </div>
+            </div>
+        </div>
+
+        <aside id="choose1">
+            
+        </aside>
+
+        <div class="form-group">
+                <label for="choosePre2">Second Preference</label>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="choosePre2">Choose a workshop</button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <button class="dropdown-item" type="button" id="arduino2">Arduino</button>
+                        <button class="dropdown-item" type="button" id="web2">Web</button>
+                        <button class="dropdown-item" type="button" id="android2">Android</button>
+                        <button class="dropdown-item" type="button" id="rasberry2">Rasberry Pi</button>
+                        <button class="dropdown-item" type="button" id="embedded2">Embedded</button>
+                    </div>
+                </div>
+            </div>
+        
+        <aside id="choose2">
+        
+        </aside>
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+      </form>
+    
+      <script src="/js/script.js"></script>
+    
+</body>
+</html>
